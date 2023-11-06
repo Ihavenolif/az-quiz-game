@@ -9,7 +9,7 @@ div.number {
     text-align: center;;
     font-size: 15pt;
     padding-top: 35px;
-    background: url('./obr/hex/hex_grey.png') no-repeat;
+    background: url('/static/obr/hex/hex_grey.png') no-repeat;
     background-size: 80px 89px;
 }
 
@@ -19,92 +19,97 @@ div.number:hover {
 }
 
 .blue_hex {
-    background-image: url('./obr/hex/hex_blue.png') !important;
+    background-image: url('/static/obr/hex/hex_blue.png') !important;
 }
 
 .green_hex {
-    background-image: url('./obr/hex/hex_green.png') !important;
+    background-image: url('/static/obr/hex/hex_green.png') !important;
 }
 
 .red_hex {
-    background-image: url('./obr/hex/hex_red.png') !important;
+    background-image: url('/static/obr/hex/hex_red.png') !important;
 }
 
 .yellow_hex {
-    background-image: url('./obr/hex/hex_yellow.png') !important;
+    background-image: url('/static/obr/hex/hex_yellow.png') !important;
 }
 
 .grey_hex {
-    background-image: url('./obr/hex/hex_grey.png') !important;
+    background-image: url('/static/obr/hex/hex_grey.png') !important;
 }
 
 .dark_hex {
-    background-image: url('./obr/hex/hex_dark.png') !important;
+    background-image: url('/static/obr/hex/hex_dark.png') !important;
 }
 
 .lottery_hex {
-    background-image: url('./obr/hex/hex_grey_los.png') !important;
+    background-image: url('/static/obr/hex/hex_grey_los.png') !important;
 }
 
 .dk_hex {
-    background-image: url('./obr/hex/hex_dk.png') !important;
+    background-image: url('/static/obr/hex/hex_dk.png') !important;
 }
 
 .dh_hex {
-    background-image: url('./obr/hex/hex_dh.png') !important;
+    background-image: url('/static/obr/hex/hex_dh.png') !important;
 }
 
 .druid_hex {
-    background-image: url('./obr/hex/hex_druid.png') !important;
+    background-image: url('/static/obr/hex/hex_druid.png') !important;
 }
 
 .evoker_hex {
-    background-image: url('./obr/hex/hex_evoker.png') !important;
+    background-image: url('/static/obr/hex/hex_evoker.png') !important;
 }
 
 .hunter_hex {
-    background-image: url('./obr/hex/hex_hunter.png') !important;
+    background-image: url('/static/obr/hex/hex_hunter.png') !important;
 }
 
 .mage_hex {
-    background-image: url('./obr/hex/hex_mage.png') !important;
+    background-image: url('/static/obr/hex/hex_mage.png') !important;
 }
 
 .monk_hex {
-    background-image: url('./obr/hex/hex_monk.png') !important;
+    background-image: url('/static/obr/hex/hex_monk.png') !important;
 }
 
 .paladin_hex {
-    background-image: url('./obr/hex/hex_paladin.png') !important;
+    background-image: url('/static/obr/hex/hex_paladin.png') !important;
 }
 
 .priest_hex {
-    background-image: url('./obr/hex/hex_priest.png') !important;
+    background-image: url('/static/obr/hex/hex_priest.png') !important;
 }
 
 .shaman_hex {
-    background-image: url('./obr/hex/hex_shaman.png') !important;
+    background-image: url('/static/obr/hex/hex_shaman.png') !important;
 }
 
 .warlock_hex {
-    background-image: url('./obr/hex/hex_warlock.png') !important;
+    background-image: url('/static/obr/hex/hex_warlock.png') !important;
 }
 
 .warrior_hex {
-    background-image: url('./obr/hex/hex_warrior.png') !important;
+    background-image: url('/static/obr/hex/hex_warrior.png') !important;
 }
 
 .krop_hex {
-    background-image: url('./obr/hex/hex_krop.png') !important;
+    background-image: url('/static/obr/hex/hex_krop.png') !important;
 }
 
 .zoro_hex {
-    background-image: url('./obr/hex/hex_zoro.png') !important;
+    background-image: url('/static/obr/hex/hex_zoro.png') !important;
 }
 
 .black_hex {
-    background-image: url('./obr/hex/hex_dark.png') !important;
+    background-image: url('/static/obr/hex/hex_dark.png') !important;
 }
+
+.rogue_hex {
+    background-image: url('/static/obr/hex/hex_rogue.png') !important;
+}
+
 
 div.screen {
     position: absolute;

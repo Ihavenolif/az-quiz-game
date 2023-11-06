@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="rajmund.cz">
+    <link type="text/css" href="/static/style.css" rel="stylesheet">
+    <title>AZ Kvíz</title>
+    <style>
+        .popup{
+            position: fixed;
+            margin: auto;
+            width: 75%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+            max-height: fit-content;
+            height: -moz-max-content;
+            background-color: white;
+        }
+
+        #progressContainer{
+            width: calc(100%-20px);
+            background-color: grey;
+            margin: 10px;
+        }
+
+        #progressbar{
+            height: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body id="body">
+<div class="screen clear">
+    <div class="popup" style="width: 40%; margin-top: 10%; border: 5px solid red; z-index: 1; display: none;" id="otazkaTimer">
+        <h3>
+            <span id="otazka-container">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+        </h3>
+        <div id="progressContainer">
+            <div id="progressbar" style="width: 20%;"></div>
+        </div>
+    </div>
+
+    <div class="page" id="playground">
+        <div class="number dh_hex" style="top:0px;left:350px;" id="div_Týna">Týna</div>
+        <div class="number dh_hex" style="top:69px;left:310px;" id="div_Gagin">Gagin</div>
+        <div class="number druid_hex" style="top:69px;left:391px;" id="div_Lana">Lana</div>
+        <div class="number rogue_hex" style="top:138px;left:270px;" id="div_Lesi">Lesi</div>
+        <div class="number rogue_hex" style="top:138px;left:351px;" id="div_Weng">Weng</div>
+        <div class="number warrior_hex" style="top:138px;left:432px;" id="div_Mia">Mia</div>
+        <div class="number warrior_hex" style="top:207px;left:230px;" id="div_Punchie">Punchie</div>
+        <div class="number warlock_hex" style="top:207px;left:311px;" id="div_Venda">Venda</div>
+        <div class="number warlock_hex" style="top:207px;left:392px;" id="div_Elg">Elg</div>
+        <div class="number warlock_hex" style="top:207px;left:473px;" id="div_Daph">Daph</div>
+        <div class="number druid_hex" style="top:276px;left:190px;" id="div_Druid">Druid</div>
+        <div class="number hunter_hex" style="top:276px;left:271px;" id="div_Andree">Andree</div>
+        <div class="number hunter_hex" style="top:276px;left:352px;" id="div_Dedgo">Dedgo</div>
+        <div class="number evoker_hex" style="top:276px;left:433px;" id="div_Linda">Linda</div>
+        <div class="number evoker_hex" style="top:276px;left:514px;" id="div_Draruka">Draruka</div>
+        <div class="number mage_hex" style="top:345px;left:150px;" id="div_Vophsi">Vophsi</div>
+        <div class="number mage_hex" style="top:345px;left:231px;" id="div_Nolife">Nolife</div>
+        <div class="number priest_hex" style="top:345px;left:312px;" id="div_Banán">Banán</div>
+        <div class="number priest_hex" style="top:345px;left:393px;" id="div_Lesienne">Lesienne</div>
+        <div class="number shaman_hex" style="top:345px;left:474px;" id="div_Papouch">Papouch</div>
+        <div class="number shaman_hex" style="top:345px;left:555px;" id="div_Chilla">Chilla</div>
+        <div class="number shaman_hex" style="top:414px;left:110px;" id="div_Zan">Zan</div>
+        <div class="number paladin_hex" style="top:414px;left:191px;" id="div_Suvoj">Suvoj</div>
+        <div class="number monk_hex" style="top:414px;left:272px;" id="div_Spaf">Spaf</div>
+        <div class="number monk_hex" style="top:414px;left:353px;" id="div_Sussile">Sussile</div>
+        <div class="number dh_hex" style="top:414px;left:434px;" id="div_Hiruka">Hiruka</div>
+        <div class="number dh_hex" style="top:414px;left:515px;" id="div_Janča">Janča</div>
+        <div class="number shaman_hex" style="top:414px;left:596px;" id="div_Solluna">Solluna</div>
+
+        <div class="team" id="tym_left">
+            <div id='img_tym_left' class="krop_hex"></div>
+            <div class="name">
+                <span contenteditable="true" id='name_tym_kropec'>Kropec</span>
+            </div>
+        </div>
+
+        <div class="team" id="tym_right">
+            <div id='img_tym_right' class="zoro_hex"></div>
+            <div class="name">
+                <span contenteditable="true" id='name_tym_zoro'>Zoro</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="color_select">
+        <div class="colors red_hex" id="tym0"></div>
+        <div class="colors blue_hex" id="tym1"></div>
+        <div class="colors dark_hex" id="dark"></div>
+        <div class="colors grey_hex" id="empty"></div>
+        <div class="colors lottery_hex" id="butt_los"></div>
+    </div>
+</div>
+
+<div class="screen" id="lottery">
+    <div class="page">
+        <div id="los_leva"></div>
+        <div id="los_prava"></div>
+    </div>
+</div>
+
+<!--
+<div class="screen" id="uvod">
+    <div class="page">
+        <div class='nadpis'>
+            <div class='az'>AZ</div>
+            <div class='kviz'>kvíz</div>
+        </div>
+    </div>
+    <div class='jmeno'>Jaroslav Rája Hutař<br><a href='http://www.rajmund.cz' target="_blank">rajmund.cz</a></div>
+</div>-->
+
+<script type="text/javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/static/js/azQuizGame.js"></script>
+</body>
+</html>

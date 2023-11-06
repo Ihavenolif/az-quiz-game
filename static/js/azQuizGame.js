@@ -1,10 +1,84 @@
-const classList = "dk_hex dh_hex druid_hex evoker_hex hunter_hex krop_hex mage_hex monk_hex paladin_hex priest_hex shaman_hex warlock_hex warrior_hex zoro_hex";
-const questionDict = {
-    "Glower": "otazkaGlower",
-    "Gagin": "otazkaGagin",
-    "Lana": "otazkaLana"
+class Player{
+    /**
+     * 
+     * @param {string} name 
+     * @param {string} otazka 
+     * @param {string} wowClass 
+     * @param {string} role 
+     * @param {boolean} isPicked 
+     * @param {string} team 
+     */
+    constructor(name, otazka, wowClass, role, isPicked, team){
+        this.name = name;
+        this.otazka = otazka;
+        this.wowClass = wowClass;
+        this.role = role;
+        this.isPicked = isPicked;
+        this.team = team;
+        this.divRef = document.getElementById("div_" + this.name);
+    }
 }
 
+const classList = "dk_hex dh_hex druid_hex evoker_hex hunter_hex krop_hex mage_hex monk_hex paladin_hex priest_hex shaman_hex warlock_hex warrior_hex zoro_hex rogue_hex";
+/**
+ * @type {Object<string,Player>}
+ */
+const players = {
+    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "DH", "dps", false, ""),
+    "Gagin": new Player("Gagin", "Gagin se IRL zná s jedním z officerů. Se kterým?", "DH", "dps", false, ""),
+    "Lana": new Player("Lana", "Za kterou class začla Lana raidovat s IAO?", "Druid", "heal", false, ""),
+    "Lesi": new Player("Lesi", "Co je to salamandr?", "Rogue", "dps", false, ""),
+    "Weng": new Player("Weng", "V nicku Wengeancovo huntera (Nevrmore) se použit jeden speciální znak. Který znak to je?", "Rogue", "dps", false, ""),
+    "Mia": new Player("Mia", "MIA PH", "Warrior", "dps", false, ""),
+    "Punchie": new Player("Punchie", "PUNCHIE PH", "Warrior", "dps", false, ""),
+    "Venda": new Player("Venda", "VENDA PH", "Warlock", "dps", false, ""),
+    "Elg": new Player("Elg", "Pro každý tier od Nathrie přiřaď LGmu, jakého maina hrál. Pokud hrál více postav, uzná se ti i jen jedna z nich.", "Warlock", "dps", false, ""),
+    "Daph": new Player("Daph", "Jaké zranění utrpěl Daph na historicky prvním velkém guildovním srazu?", "Warlock", "dps", false, ""),
+    "Dralf": new Player("Dralf", "DRALF PH", "Druid", "dps", false, ""),
+    "Andree": new Player("Andree", "Andree má moc rád jeden konkrétní dopravní prostředek. Jaký?", "Hunter", "dps", false, ""),
+    "Dedgo": new Player("Dedgo", "DEDGO PH", "Hunter", "dps", false, ""),
+    "Linda": new Player("Linda", "Padla evoker legendárka dříve Lindovi nebo LGmu?", "Evoker", "dps", false, ""),
+    "Draruka": new Player("Draruka", "DRARUKA PH", "Evoker", "dps", false, ""),
+    "Vophsi": new Player("Vophsi", "Jaká abilita je Vophsiho nemesis z Xy'moxe v Nathrii?", "Mage", "dps", false, ""),
+    "Nolife": new Player("Nolife", "Kolik let bylo Nolifovi, když začal raidovat s IAO?", "Mage", "dps", false, ""),
+    "Banán": new Player("Banán", "Banán nemá rád, když musí hrát holy. Je to totiž shadow main. Ano nebo ne?", "Priest", "heal", false, ""),
+    "Lesienne": new Player("Lesienne", "Jak se jmenoval healer, který se s Lesiennem střídal na progressu Denathriuse, a který místo něj byl na killu?", "Priest", "heal", false, ""),
+    "Papouch": new Player("Papouch", "PAPOUCH PH", "Shaman", "heal", false, ""),
+    "Chilla": new Player("Chilla", "CHILLA PH", "Shaman", "heal", false, ""),
+    "Zan": new Player("Zan", "ZAN PH", "Shaman", "dps", false, ""),
+    "Suvoj": new Player("Suvoj", "Jaká je nejčastejší koncovka u Suvojových nicků postav?", "Paladin", "heal", false, ""),
+    "Spaf": new Player("Spaf", "Spaf byl členem IAO už při jejím prvním mythic tieru. Ano nebo ne?", "Monk", "heal", false, ""),
+    "Sussile": new Player("Sussile", "SUSSILE PH", "Monk", "tank", false, ""),
+    "Hiruka": new Player("Hiruka", "Jakou roli zastává Honza ve svojí kapele, kterou nikdy nikdo neslyšel a nikde nehrála?", "DH", "tank", false, ""),
+    "Janča": new Player("Janča", "JANČA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "DH", "dps", false, ""),
+    "Solluna": new Player("Solluna", "SOLLUNA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "Shaman", "dps", false, ""),
+}
+/**
+ * @type {Array<string>}
+ */
+let guildOtazky = [
+    "Kolik let už existuje IAO?",
+    "Jaký byl první raid tier IAO?",
+    "Za celou dobu se v IAO vystřídalo 9 officerů. Ano nebo ne?"
+]
+const game = {
+    otazka:{
+        timeRemaining: 10*60,
+        isRunning: false,
+        isCorrect: false,
+        isLaunched: false,
+        isfinished: true,
+        timer: null,
+        player: new Player("", "", "", "", false, "")
+    },
+    onTurn: "zoro"
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
 
 var AzQuizGame = {
     players: [
@@ -99,7 +173,6 @@ AzQuizGame.applyColors = function () {
  * @param {string} player 
  * @param {string} color 
  */
-
 function setColor(player, color){
     $("#div_" + player).removeClass(classList).addClass(color + "_hex");
 }
@@ -127,17 +200,108 @@ function setPopupVisibility(flag){
     }
 }
 
+function setTurn(gdo){
+    if(gdo == "kropec"){
+        document.getElementById("name_tym_kropec").style.fontWeight = "bold";
+        document.getElementById("name_tym_zoro").style.fontWeight = "normal";
+    }
+    else{
+        document.getElementById("name_tym_kropec").style.fontWeight = "normal";
+        document.getElementById("name_tym_zoro").style.fontWeight = "bold";
+    }
+}
+
+setTurn(game.onTurn);
+
 /**
  * Gets called every time an element is clicked
  * @param {HTMLDivElement} self 
  */
 function onClick(self){
-    let otazka = questionDict[self.id.split("_")[1]];
+    let player = players[self.id.split("_")[1]]
+    let otazka;
+    if(player.isPicked){
+        return;
+    }
+    if(player.team == "kosik"){
+        id = getRandomInt(0,guildOtazky.length);
+        otazka = guildOtazky[id];
+        guildOtazky.splice(id, 1);
+    }
+    else{
+        otazka = player.otazka;
+    }
+    document.getElementById("progressbar").style.backgroundColor = game.onTurn == "zoro" ? "#F48CBA" : "#C41E3A"
+    setProgress(100)
     setPopupVisibility(true);
     document.getElementById("otazka-container").innerHTML = otazka;
-    timer = setInterval(() => {
-        
+    game.otazka.timeRemaining = 10*60;
+    game.otazka.isRunning = false;
+    game.otazka.isCorrect = false;
+    game.otazka.isLaunched = false;
+    game.otazka.isfinished = false;
+    clearInterval(game.otazka.timer);
+    game.otazka.timer = null;
+    game.otazka.player = player;
+}
+
+function startTimer(){
+    game.otazka.isRunning = true;
+    game.otazka.isLaunched = true;
+    game.otazka.timer = setInterval(() => {
+        game.otazka.timeRemaining--;
+        setProgress((game.otazka.timeRemaining / (10*60))*100);
+        if (game.otazka.timeRemaining == 0) {
+            clearInterval(game.otazka.timer);
+            game.otazka.isRunning = false;
+        }
     }, 1000/60);
+}
+
+function onEnterPress(){
+    console.log("enter pressed")
+    if(game.otazka.isfinished){
+        return;
+    }
+    if(!game.otazka.isLaunched){
+        startTimer();
+        return;
+    }
+    if(game.otazka.isRunning){
+        clearInterval(game.otazka.timer);
+        game.otazka.isRunning = false;
+        game.otazka.isCorrect = true;
+        return;
+    }
+    setPopupVisibility(false);
+    if(game.otazka.isCorrect){
+        if(game.onTurn == "zoro"){
+            game.otazka.player.team = "zoro";
+            setColor(game.otazka.player.name, "zoro");
+            game.otazka.isfinished = true;
+            game.onTurn = "kropec";
+            setTurn(game.onTurn);
+            game.otazka.player.isPicked = true;
+        }else{
+            game.otazka.player.team = "kropec";
+            setColor(game.otazka.player.name, "krop");
+            game.otazka.isfinished = true;
+            game.onTurn = "zoro";
+            setTurn(game.onTurn);
+            game.otazka.player.isPicked = true;
+        }
+    }
+    else{
+        game.otazka.player.team = "kosik";
+        setColor(game.otazka.player.name, "dark");
+        if(game.onTurn == "zoro"){
+            game.onTurn = "kropec";
+        }
+        else{
+            game.onTurn = "zoro"
+        }
+        setTurn(game.onTurn);
+    }
 }
 
 AzQuizGame.bind = function () {
@@ -165,15 +329,13 @@ AzQuizGame.bind = function () {
     }*/
 
     document.addEventListener("keydown", function (e) {
-        if (AzQuizGame.settings.isQuestionActive) {
-            if (e.key == "Escape") {
-                e.preventDefault();
-                //escape handle
-            }
-            else if (e.key == "Enter") {
-                e.preventDefault();
-                //enter handle
-            }
+        if (e.key == "Escape") {
+            e.preventDefault();
+            //escape handle
+        }
+        else if (e.key == "Enter") {
+            e.preventDefault();
+            onEnterPress();
         }
     });
 
