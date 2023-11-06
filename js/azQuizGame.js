@@ -1,3 +1,11 @@
+const classList = "dk_hex dh_hex druid_hex evoker_hex hunter_hex krop_hex mage_hex monk_hex paladin_hex priest_hex shaman_hex warlock_hex warrior_hex zoro_hex";
+const questionDict = {
+    "Glower": "otazkaGlower",
+    "Gagin": "otazkaGagin",
+    "Lana": "otazkaLana"
+}
+
+
 var AzQuizGame = {
     players: [
         {
@@ -33,7 +41,8 @@ var AzQuizGame = {
             toVisit: [],
             blink: true,
             timerWin: null
-        }
+        },
+        isQuestionActive: false
     },
     neighbors: [
         [],
@@ -73,7 +82,6 @@ AzQuizGame.start = function () {
     $("#help, #lottery, #color_select").hide();
     $("#uvod").delay(2000).fadeOut(1000);
 
-    this.applyColors();
     this.bind();
 };
 
@@ -86,10 +94,65 @@ AzQuizGame.applyColors = function () {
     $("#tym1").removeClass(rmClasses).addClass(this.players[1].color + "_hex");
 };
 
+/**
+ * 
+ * @param {string} player 
+ * @param {string} color 
+ */
+
+function setColor(player, color){
+    $("#div_" + player).removeClass(classList).addClass(color + "_hex");
+}
+
+/**
+ * 
+ * @param {number} percentage 
+ */
+function setProgress(percentage){
+    let perc = "" + percentage + "%";
+    document.getElementById("progressbar").style.width = perc;
+    console.log(perc);
+}
+
+/**
+ * 
+ * @param {boolean} flag 
+ */
+function setPopupVisibility(flag){
+    if(flag){
+        document.getElementById("otazkaTimer").style.display = "block";
+    }
+    else{
+        document.getElementById("otazkaTimer").style.display = "none";
+    }
+}
+
+/**
+ * Gets called every time an element is clicked
+ * @param {HTMLDivElement} self 
+ */
+function onClick(self){
+    let otazka = questionDict[self.id.split("_")[1]];
+    setPopupVisibility(true);
+    document.getElementById("otazka-container").innerHTML = otazka;
+    timer = setInterval(() => {
+        
+    }, 1000/60);
+}
+
 AzQuizGame.bind = function () {
-    var numbers = document.getElementsByClassName("number");
-    for (var i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener("click", function (event) {
+    /**
+     * @type {Array<HTMLElement>}
+     */
+    var fields = document.getElementsByClassName("number");
+    for(let i of fields){
+        i.addEventListener("click", () => {
+            onClick(i);
+        })
+    }
+    /*
+    for (var i = 0; i < fields.length; i++) {
+        fields[i].addEventListener("click", function (event) {
             AzQuizGame.selectHex(event);
         });
     }
@@ -99,36 +162,19 @@ AzQuizGame.bind = function () {
         colors[j].addEventListener("click", function (event) {
             AzQuizGame.selectColor(AzQuizGame.settings.selectedNum, event.toElement.id);
         });
-    }
+    }*/
 
     document.addEventListener("keydown", function (e) {
-        if (AzQuizGame.settings.lottery.isRunning) {
-            if (e.keyCode == AzQuizGame.settings.lottery.keyCodeLeft || e.keyCode == AzQuizGame.settings.lottery.keyCodeRight) {
+        if (AzQuizGame.settings.isQuestionActive) {
+            if (e.key == "Escape") {
                 e.preventDefault();
-                AzQuizGame.lotteryKeyboardClick(e.keyCode);
+                //escape handle
+            }
+            else if (e.key == "Enter") {
+                e.preventDefault();
+                //enter handle
             }
         }
-    });
-
-    document.getElementById("img_tym_left").addEventListener("click", function () {
-        AzQuizGame.changePlayerColor(0);
-    });
-    document.getElementById("img_tym_right").addEventListener("click", function () {
-        AzQuizGame.changePlayerColor(1);
-    });
-    document.getElementById("name_tym_left").addEventListener("keyup", function (ele) {
-        AzQuizGame.changePlayerName(0, ele.target.innerText);
-    });
-    document.getElementById("name_tym_right").addEventListener("keyup", function (ele) {
-        AzQuizGame.changePlayerName(1, ele.target.innerText);
-    });
-
-    document.getElementById("help_button").addEventListener("click", function () {
-        $("#help").fadeIn(500);
-    });
-
-    document.getElementById("close_help_button").addEventListener("click", function () {
-        $("#help").fadeOut(500);
     });
 
     var events = ["resize", "load"];
@@ -151,6 +197,11 @@ AzQuizGame.setProperGameHeight = function(){
     document.getElementById("body").style.zoom = this.settings.zoom;
 };
 
+/**
+ * Is called on hex click
+ * @param {Event} event 
+ * @returns 
+ */
 AzQuizGame.selectHex = function (event) {
     if (!this.checkSetup()) {
         return;

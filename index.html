@@ -5,25 +5,60 @@
     <meta name="author" content="rajmund.cz">
     <link type="text/css" href="./style.css" rel="stylesheet">
     <title>AZ Kvíz</title>
+    <style>
+        .popup{
+            position: fixed;
+            margin: auto;
+            width: 75%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+            max-height: fit-content;
+            height: -moz-max-content;
+            background-color: white;
+        }
+
+        #progressContainer{
+            width: calc(100%-20px);
+            background-color: grey;
+            margin: 10px;
+        }
+
+        #progressbar{
+            height: 20px;
+            background-color: green;
+        }
+    </style>
 </head>
 <body id="body">
 <div class="screen clear">
+    <div class="popup" style="width: 40%; margin-top: 10%; border: 5px solid red; z-index: 1;" id="otazkaTimer">
+        <h3>
+            <span id="otazka-container">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+        </h3>
+        <div id="progressContainer">
+            <div id="progressbar" style="width: 20%;"></div>
+        </div>
+    </div>
+
     <div class="page" id="playground">
-        <div class="number" style="top:0px;left:350px;" id="div_1">1</div>
-        <div class="number" style="top:69px;left:310px;" id="div_2">2</div>
-        <div class="number" style="top:69px;left:391px;" id="div_3">3</div>
-        <div class="number" style="top:138px;left:270px;" id="div_4">4</div>
-        <div class="number" style="top:138px;left:351px;" id="div_5">5</div>
-        <div class="number" style="top:138px;left:432px;" id="div_6">6</div>
-        <div class="number" style="top:207px;left:230px;" id="div_7">7</div>
-        <div class="number" style="top:207px;left:311px;" id="div_8">8</div>
-        <div class="number" style="top:207px;left:392px;" id="div_9">9</div>
-        <div class="number" style="top:207px;left:473px;" id="div_10">10</div>
-        <div class="number" style="top:276px;left:190px;" id="div_11">11</div>
-        <div class="number" style="top:276px;left:271px;" id="div_12">12</div>
-        <div class="number" style="top:276px;left:352px;" id="div_13">13</div>
-        <div class="number" style="top:276px;left:433px;" id="div_14">14</div>
-        <div class="number" style="top:276px;left:514px;" id="div_15">15</div>
+        <div class="number dk_hex" style="top:0px;left:350px;" id="div_Glower">Glower</div>
+        <div class="number dh_hex" style="top:69px;left:310px;" id="div_Gagin">Gagin</div>
+        <div class="number druid_hex" style="top:69px;left:391px;" id="div_Lana">Lana</div>
+        <div class="number evoker_hex" style="top:138px;left:270px;" id="div_Linda">Linda</div>
+        <div class="number hunter_hex" style="top:138px;left:351px;" id="div_Julka">Julka</div>
+        <div class="number mage_hex" style="top:138px;left:432px;" id="div_Vophsi">Vophsi</div>
+        <div class="number monk_hex" style="top:207px;left:230px;" id="div_Sussile">Sussile</div>
+        <div class="number paladin_hex" style="top:207px;left:311px;" id="div_Polichan">Polichan</div>
+        <div class="number priest_hex" style="top:207px;left:392px;" id="div_Krenius">Krenius</div>
+        <div class="number shaman_hex" style="top:207px;left:473px;" id="div_nemame">nemame</div>
+        <div class="number warlock_hex" style="top:276px;left:190px;" id="div_Elg">Elg</div>
+        <div class="number warrior_hex" style="top:276px;left:271px;" id="div_Mia">Mia</div>
+        <div class="number krop_hex" style="top:276px;left:352px;" id="div_kropecpicked">picked</div>
+        <div class="number zoro_hex" style="top:276px;left:433px;" id="div_zoropicked">picked</div>
+        <div class="number black_hex" style="top:276px;left:514px;" id="div_kosik">kosik</div>
         <div class="number" style="top:345px;left:150px;" id="div_16">16</div>
         <div class="number" style="top:345px;left:231px;" id="div_17">17</div>
         <div class="number" style="top:345px;left:312px;" id="div_18">18</div>
@@ -39,24 +74,23 @@
         <div class="number" style="top:414px;left:596px;" id="div_28">28</div>
 
         <div class="team" id="tym_left">
-            <div id='img_tym_left'></div>
+            <div id='img_tym_left' class="krop_hex"></div>
             <div class="name">
-                <span contenteditable="true" id='name_tym_left'>Team 1</span>
+                <span contenteditable="true" id='name_tym_left'>Kropička</span>
             </div>
         </div>
 
         <div class="team" id="tym_right">
-            <div id='img_tym_right'></div>
+            <div id='img_tym_right' class="zoro_hex"></div>
             <div class="name">
-                <span contenteditable="true" id='name_tym_right'>Team 2</span>
+                <span contenteditable="true" id='name_tym_right'>Zoro</span>
             </div>
         </div>
-        <div class="button" id="help_button">Nápověda</div>
     </div>
 
     <div id="color_select">
-        <div class="colors grey_hex" id="tym0"></div>
-        <div class="colors grey_hex" id="tym1"></div>
+        <div class="colors red_hex" id="tym0"></div>
+        <div class="colors blue_hex" id="tym1"></div>
         <div class="colors dark_hex" id="dark"></div>
         <div class="colors grey_hex" id="empty"></div>
         <div class="colors lottery_hex" id="butt_los"></div>
@@ -70,37 +104,7 @@
     </div>
 </div>
 
-<div class="screen" id="help">
-    <div class="page">
-        <div class="text">
-            <ul>
-                <li>Před začátkem hry:<br>
-                    <ul>
-                        <li>Vyplň jména týmů / hráčů</li>
-                        <li>Vyber barvy týmů / hráčů</li>
-                    </ul>
-                </li>
-                <li>Po kliknutí na vybrané pole je možné:
-                    <ul>
-                        <li>Přiřadit pole týmu / hráči</li>
-                        <li>Nastavit pole jako neuhodnuté</li>
-                        <li>O pole je možné losovat</li>
-                    </ul>
-                </li>
-                <li>Při losování:
-                    <ul>
-                        <li>Pravý tým / hráč mačká tlačítko + na numerické klávenici nebo klávesu Backspace</li>
-                        <li>Levý tým / hráč mačká tlačítko Levý Shift</li>
-                    </ul>
-                </li>
-                <li>Po spojení všech tří stěn trojuhelníku hra oznámí vítěze</li>
-                <li>TIP: Zapni režim celé obrazovky (F11)</li>
-            </ul>
-        </div>
-        <div class="button" id="close_help_button">Zpět</div>
-    </div>
-</div>
-
+<!--
 <div class="screen" id="uvod">
     <div class="page">
         <div class='nadpis'>
@@ -109,7 +113,7 @@
         </div>
     </div>
     <div class='jmeno'>Jaroslav Rája Hutař<br><a href='http://www.rajmund.cz' target="_blank">rajmund.cz</a></div>
-</div>
+</div>-->
 
 <script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="./js/azQuizGame.js"></script>
