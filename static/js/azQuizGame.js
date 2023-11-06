@@ -304,6 +304,32 @@ function onEnterPress(){
     }
 }
 
+function onEscPress(){
+    console.log("esc pressed")
+    if(game.otazka.isfinished){
+        return;
+    }
+    if(!game.otazka.isRunning && game.otazka.isLaunched){
+        if(game.onTurn == "zoro"){
+            game.otazka.player.team = "kropec";
+            setColor(game.otazka.player.name, "krop");
+            game.otazka.player.isPicked = true;
+            game.onTurn = "kropec";
+            setTurn(game.onTurn);
+            game.otazka.isfinished = true;
+        }
+        else{
+            game.otazka.player.team = "zoro";
+            setColor(game.otazka.player.name, "zoro");
+            game.otazka.player.isPicked = true;
+            game.onTurn = "zoro";
+            setTurn(game.onTurn);
+            game.otazka.isfinished = true;
+        }
+        setPopupVisibility(false);
+    }
+}
+
 AzQuizGame.bind = function () {
     /**
      * @type {Array<HTMLElement>}
@@ -331,7 +357,7 @@ AzQuizGame.bind = function () {
     document.addEventListener("keydown", function (e) {
         if (e.key == "Escape") {
             e.preventDefault();
-            //escape handle
+            onEscPress();
         }
         else if (e.key == "Enter") {
             e.preventDefault();
