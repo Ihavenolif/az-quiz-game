@@ -214,6 +214,34 @@ function setTurn(gdo){
 setTurn(game.onTurn);
 
 /**
+ * 
+ * @param {boolean} flag 
+ */
+function setContextMenuVisibility(flag){
+    if(flag){
+        document.getElementById("contextMenu").style.display = "block";
+    }
+    else{
+        document.getElementById("contextMenu").style.display = "none";
+    }
+}
+
+/**
+ * 
+ * @param {HTMLDivElement} self 
+ */
+function onRightClick(self){
+    if (document.getElementById("contextMenu") .style.display == "block"){ 
+        setContextMenuVisibility(false);
+    }else{ 
+        var menu = document.getElementById("contextMenu")      
+        menu.style.display = 'block'; 
+        menu.style.left = e.pageX + "px"; 
+        menu.style.top = e.pageY + "px"; 
+    } 
+}
+
+/**
  * Gets called every time an element is clicked
  * @param {HTMLDivElement} self 
  */
@@ -338,6 +366,10 @@ AzQuizGame.bind = function () {
     for(let i of fields){
         i.addEventListener("click", () => {
             onClick(i);
+        })
+        i.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            onRightClick(i);
         })
     }
     /*
