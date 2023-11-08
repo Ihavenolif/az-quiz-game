@@ -208,6 +208,7 @@ function setPopupVisibility(flag){
 }
 
 function setTurn(gdo){
+    game.onTurn = gdo;
     if(gdo == "kropec"){
         document.getElementById("name_tym_kropec").style.fontWeight = "bold";
         document.getElementById("name_tym_zoro").style.fontWeight = "normal";
@@ -428,16 +429,14 @@ function onEnterPress(){
             game.tymZoro.push(game.otazka.player);
             setColor(game.otazka.player.name, "zoro");
             game.otazka.isfinished = true;
-            game.onTurn = "kropec";
-            setTurn(game.onTurn);
+            setTurn("kropec");
             game.otazka.player.isPicked = true;
         }else{
             game.otazka.player.team = "kropec";
             game.tymKropec.push(game.otazka.player);
             setColor(game.otazka.player.name, "krop");
             game.otazka.isfinished = true;
-            game.onTurn = "zoro";
-            setTurn(game.onTurn);
+            setTurn("zoro");
             game.otazka.player.isPicked = true;
         }
     }
@@ -445,12 +444,11 @@ function onEnterPress(){
         game.otazka.player.team = "kosik";
         setColor(game.otazka.player.name, "dark");
         if(game.onTurn == "zoro"){
-            game.onTurn = "kropec";
+            setTurn("kropec");
         }
         else{
-            game.onTurn = "zoro"
+            setTurn("zoro");
         }
-        setTurn(game.onTurn);
     }
     setPopupVisibility(false);
 }
@@ -466,8 +464,7 @@ function onEscPress(){
             game.tymKropec.push(game.otazka.player);
             setColor(game.otazka.player.name, "krop");
             game.otazka.player.isPicked = true;
-            game.onTurn = "kropec";
-            setTurn(game.onTurn);
+            setTurn("kropec");
             game.otazka.isfinished = true;
         }
         else{
@@ -475,8 +472,7 @@ function onEscPress(){
             game.tymZoro.push(game.otazka.player);
             setColor(game.otazka.player.name, "zoro");
             game.otazka.player.isPicked = true;
-            game.onTurn = "zoro";
-            setTurn(game.onTurn);
+            setTurn("zoro");
             game.otazka.isfinished = true;
         }
         setPopupVisibility(false);
