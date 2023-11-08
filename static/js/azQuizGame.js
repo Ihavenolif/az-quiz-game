@@ -71,7 +71,9 @@ const game = {
         isLaunched: false,
         isfinished: true,
         timer: null,
-        player: new Player("", "", "", "", false, "")
+        player: new Player("", "", "", "", false, ""),
+        isSoundPlaying: false,
+        sound: document.getElementById("audio")
     },
     onTurn: "zoro",
     isContextMenuShown: false,
@@ -398,9 +400,15 @@ function onClick(self){
 function startTimer(){
     game.otazka.isRunning = true;
     game.otazka.isLaunched = true;
+    game.otazka.isSoundPlaying = false;
+    game.otazka.sound.currentTime = 0;
     game.otazka.timer = setInterval(() => {
         game.otazka.timeRemaining--;
         setProgress((game.otazka.timeRemaining / (10*60))*100);
+        if (game.otazka.timeRemaining == 6.1*60){
+            game.otazka.isSoundPlaying = true;
+            game.otazka.sound.play();
+        }
         if (game.otazka.timeRemaining == 0) {
             clearInterval(game.otazka.timer);
             game.otazka.isRunning = false;
@@ -421,6 +429,8 @@ function onEnterPress(){
         clearInterval(game.otazka.timer);
         game.otazka.isRunning = false;
         game.otazka.isCorrect = true;
+        game.otazka.isSoundPlaying = false;
+        game.otazka.sound.pause();
         return;
     }
     if(game.otazka.isCorrect){
