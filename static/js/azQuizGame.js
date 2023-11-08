@@ -24,34 +24,36 @@ const classList = "dk_hex dh_hex druid_hex evoker_hex hunter_hex krop_hex mage_h
  * @type {Object<string,Player>}
  */
 const players = {
-    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "DH", "dps", false, ""),
-    "Gagin": new Player("Gagin", "Gagin se IRL zná s jedním z officerů. Se kterým?", "DH", "dps", false, ""),
-    "Lana": new Player("Lana", "Za kterou class začla Lana raidovat s IAO?", "Druid", "heal", false, ""),
-    "Lesi": new Player("Lesi", "Co je to salamandr?", "Rogue", "dps", false, ""),
-    "Weng": new Player("Weng", "V nicku Wengeancovo huntera (Nevrmore) se použit jeden speciální znak. Který znak to je?", "Rogue", "dps", false, ""),
-    "Mia": new Player("Mia", "MIA PH", "Warrior", "dps", false, ""),
-    "Punchie": new Player("Punchie", "PUNCHIE PH", "Warrior", "dps", false, ""),
-    "Venda": new Player("Venda", "VENDA PH", "Warlock", "dps", false, ""),
-    "Elg": new Player("Elg", "Pro každý tier od Nathrie přiřaď LGmu, jakého maina hrál. Pokud hrál více postav, uzná se ti i jen jedna z nich.", "Warlock", "dps", false, ""),
-    "Daph": new Player("Daph", "Jaké zranění utrpěl Daph na historicky prvním velkém guildovním srazu?", "Warlock", "dps", false, ""),
-    "Dralf": new Player("Dralf", "DRALF PH", "Druid", "dps", false, ""),
-    "Andree": new Player("Andree", "Andree má moc rád jeden konkrétní dopravní prostředek. Jaký?", "Hunter", "dps", false, ""),
-    "Dedgo": new Player("Dedgo", "DEDGO PH", "Hunter", "dps", false, ""),
-    "Linda": new Player("Linda", "Padla evoker legendárka dříve Lindovi nebo LGmu?", "Evoker", "dps", false, ""),
-    "Draruka": new Player("Draruka", "DRARUKA PH", "Evoker", "dps", false, ""),
-    "Vophsi": new Player("Vophsi", "Jaká abilita je Vophsiho nemesis z Xy'moxe v Nathrii?", "Mage", "dps", false, ""),
-    "Nolife": new Player("Nolife", "Kolik let bylo Nolifovi, když začal raidovat s IAO?", "Mage", "dps", false, ""),
-    "Banán": new Player("Banán", "Banán nemá rád, když musí hrát holy. Je to totiž shadow main. Ano nebo ne?", "Priest", "heal", false, ""),
-    "Lesienne": new Player("Lesienne", "Jak se jmenoval healer, který se s Lesiennem střídal na progressu Denathriuse, a který místo něj byl na killu?", "Priest", "heal", false, ""),
-    "Papouch": new Player("Papouch", "PAPOUCH PH", "Shaman", "heal", false, ""),
-    "Chilla": new Player("Chilla", "CHILLA PH", "Shaman", "heal", false, ""),
-    "Zan": new Player("Zan", "ZAN PH", "Shaman", "dps", false, ""),
-    "Suvoj": new Player("Suvoj", "Jaká je nejčastejší koncovka u Suvojových nicků postav?", "Paladin", "heal", false, ""),
-    "Spaf": new Player("Spaf", "Spaf byl členem IAO už při jejím prvním mythic tieru. Ano nebo ne?", "Monk", "heal", false, ""),
-    "Sussile": new Player("Sussile", "SUSSILE PH", "Monk", "tank", false, ""),
-    "Hiruka": new Player("Hiruka", "Jakou roli zastává Honza ve svojí kapele, kterou nikdy nikdo neslyšel a nikde nehrála?", "DH", "tank", false, ""),
-    "Janča": new Player("Janča", "JANČA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "DH", "dps", false, ""),
-    "Solluna": new Player("Solluna", "SOLLUNA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "Shaman", "dps", false, ""),
+    "Kropec": new Player("Kropec", "lorem ipsum", "dk", "dps", true, "kropec"),
+    "Zoro": new Player("Zoro", "lorem ipsum", "paladin", "tank", true, "zoro"),
+    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "dh", "dps", false, ""),
+    "Gagin": new Player("Gagin", "Gagin se IRL zná s jedním z officerů. Se kterým?", "dh", "dps", false, ""),
+    "Lana": new Player("Lana", "Za kterou class začla Lana raidovat s IAO?", "druid", "heal", false, ""),
+    "Lesi": new Player("Lesi", "Co je to salamandr?", "rogue", "dps", false, ""),
+    "Weng": new Player("Weng", "V nicku Wengeancovo huntera (Nevrmore) se použit jeden speciální znak. Který znak to je?", "rogue", "dps", false, ""),
+    "Mia": new Player("Mia", "MIA PH", "warrior", "dps", false, ""),
+    "Punchie": new Player("Punchie", "PUNCHIE PH", "warrior", "dps", false, ""),
+    "Venda": new Player("Venda", "VENDA PH", "warlock", "dps", false, ""),
+    "Elg": new Player("Elg", "Pro každý tier od Nathrie přiřaď LGmu, jakého maina hrál. Pokud hrál více postav, uzná se ti i jen jedna z nich.", "warlock", "dps", false, ""),
+    "Daph": new Player("Daph", "Jaké zranění utrpěl Daph na historicky prvním velkém guildovním srazu?", "warlock", "dps", false, ""),
+    "Dralf": new Player("Dralf", "DRALF PH", "druid", "dps", false, ""),
+    "Andree": new Player("Andree", "Andree má moc rád jeden konkrétní dopravní prostředek. Jaký?", "hunter", "dps", false, ""),
+    "Dedgo": new Player("Dedgo", "DEDGO PH", "hunter", "dps", false, ""),
+    "Linda": new Player("Linda", "Padla evoker legendárka dříve Lindovi nebo LGmu?", "evoker", "dps", false, ""),
+    "Draruka": new Player("Draruka", "DRARUKA PH", "evoker", "dps", false, ""),
+    "Vophsi": new Player("Vophsi", "Jaká abilita je Vophsiho nemesis z Xy'moxe v Nathrii?", "mage", "dps", false, ""),
+    "Nolife": new Player("Nolife", "Kolik let bylo Nolifovi, když začal raidovat s IAO?", "mage", "dps", false, ""),
+    "Banán": new Player("Banán", "Banán nemá rád, když musí hrát holy. Je to totiž shadow main. Ano nebo ne?", "priest", "heal", false, ""),
+    "Lesienne": new Player("Lesienne", "Jak se jmenoval healer, který se s Lesiennem střídal na progressu Denathriuse, a který místo něj byl na killu?", "priest", "heal", false, ""),
+    "Papouch": new Player("Papouch", "PAPOUCH PH", "shaman", "heal", false, ""),
+    "Chilla": new Player("Chilla", "CHILLA PH", "shaman", "heal", false, ""),
+    "Zan": new Player("Zan", "ZAN PH", "shaman", "dps", false, ""),
+    "Suvoj": new Player("Suvoj", "Jaká je nejčastejší koncovka u Suvojových nicků postav?", "paladin", "heal", false, ""),
+    "Spaf": new Player("Spaf", "Spaf byl členem IAO už při jejím prvním mythic tieru. Ano nebo ne?", "monk", "heal", false, ""),
+    "Sussile": new Player("Sussile", "SUSSILE PH", "monk", "tank", false, ""),
+    "Hiruka": new Player("Hiruka", "Jakou roli zastává Honza ve svojí kapele, kterou nikdy nikdo neslyšel a nikde nehrála?", "dh", "tank", false, ""),
+    "Janča": new Player("Janča", "JANČA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "dh", "dps", false, ""),
+    "Solluna": new Player("Solluna", "SOLLUNA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "shaman", "dps", false, ""),
 }
 /**
  * @type {Array<string>}
@@ -71,7 +73,11 @@ const game = {
         timer: null,
         player: new Player("", "", "", "", false, "")
     },
-    onTurn: "zoro"
+    onTurn: "zoro",
+    isContextMenuShown: false,
+    selectedTileName: "",
+    tymKropec: [players["Kropec"]],
+    tymZoro: [players["Zoro"]]
 }
 
 function getRandomInt(min, max) {
@@ -196,6 +202,7 @@ function setPopupVisibility(flag){
         document.getElementById("otazkaTimer").style.display = "block";
     }
     else{
+        updateTeams()
         document.getElementById("otazkaTimer").style.display = "none";
     }
 }
@@ -217,9 +224,13 @@ setTurn(game.onTurn);
  * 
  * @param {boolean} flag 
  */
-function setContextMenuVisibility(flag){
+function setContextMenuVisibility(flag, e){
+    game.isContextMenuShown = flag
     if(flag){
-        document.getElementById("contextMenu").style.display = "block";
+        var menu = document.getElementById("contextMenu")      
+        menu.style.display = 'block'; 
+        menu.style.left = (e.clientX) / Number(document.body.style.zoom) + "px"; 
+        menu.style.top = (e.clientY) / Number(document.body.style.zoom) + "px"; 
     }
     else{
         document.getElementById("contextMenu").style.display = "none";
@@ -229,23 +240,133 @@ function setContextMenuVisibility(flag){
 /**
  * 
  * @param {HTMLDivElement} self 
+ * @param {MouseEvent} e 
  */
-function onRightClick(self){
-    if (document.getElementById("contextMenu") .style.display == "block"){ 
+function onRightClick(self, e){
+    if (game.isContextMenuShown){ 
         setContextMenuVisibility(false);
     }else{ 
-        var menu = document.getElementById("contextMenu")      
-        menu.style.display = 'block'; 
-        menu.style.left = e.pageX + "px"; 
-        menu.style.top = e.pageY + "px"; 
+        setContextMenuVisibility(true, e);
+        game.selectedTileName = self.id.split("_")[1];
     } 
 }
+
+/**
+ * 
+ * @param {string} team 
+ */
+function forceSelect(team){
+    player = players[game.selectedTileName];
+    if(player.isPicked){
+        if(player.team == "zoro"){
+            game.tymZoro.splice(game.tymZoro.indexOf(player), 1);
+        }
+        if(player.team == "kropec"){
+            game.tymKropec.splice(game.tymKropec.indexOf(player), 1);
+        }
+    }
+    switch (team){
+        case "zoro":
+            player.isPicked = true;
+            player.team = "zoro";
+            game.tymZoro.push(player);
+            setColor(player.name,"zoro");
+            break;
+        case "kropec":
+            player.isPicked = true;
+            player.team = "kropec";
+            game.tymKropec.push(player);
+            setColor(player.name,"krop");
+            break;
+        case "black":
+            player.isPicked = false;
+            player.team = "kosik";
+            setColor(player.name,"dark");
+            break;
+        case "reset":
+            player.isPicked = false;
+            player.team = "";
+            setColor(player.name,player.wowClass);
+            break;
+    }
+    updateTeams();
+}
+
+function updateTeams(){
+    /*game.tymKropec = [];
+    game.tymZoro = [];
+    for(let i in players){
+        if(players[i].team == "kropec"){
+            game.tymKropec.push(players[i]);
+        }
+        else if(players[i].team == "zoro"){
+            game.tymZoro.push(players[i]);
+        }
+    }*/
+    let kropTanks = [];
+    let kropHeals = [];
+    let kropDps = [];
+    document.getElementById("tanks-kropec").innerHTML = "";
+    document.getElementById("heals-kropec").innerHTML = "";
+    document.getElementById("dps-kropec").innerHTML = "";
+    for (const i of game.tymKropec) {
+        switch (i.role){
+            case "tank":
+                document.getElementById("tanks-kropec").innerHTML += i.name + "<br>";
+                kropTanks.push(i);
+                break;
+            case "heal":
+                document.getElementById("heals-kropec").innerHTML += i.name + "<br>";
+                kropHeals.push(i);
+                break;
+            case "dps":
+                document.getElementById("dps-kropec").innerHTML += i.name + "<br>";
+                kropDps.push(i);
+                break;
+        }
+    }
+    document.getElementById("tank-count-kropec").innerHTML = kropTanks.length;
+    document.getElementById("heal-count-kropec").innerHTML = kropHeals.length;
+    document.getElementById("dps-count-kropec").innerHTML = kropDps.length;
+    
+    let zoroTanks = [];
+    let zoroHeals = [];
+    let zoroDps = [];
+    document.getElementById("tanks-zoro").innerHTML = "";
+    document.getElementById("heals-zoro").innerHTML = "";
+    document.getElementById("dps-zoro").innerHTML = "";
+    for (const i of game.tymZoro) {
+        switch (i.role){
+            case "tank":
+                document.getElementById("tanks-zoro").innerHTML += i.name + "<br>";
+                zoroTanks.push(i);
+                break;
+            case "heal":
+                document.getElementById("heals-zoro").innerHTML += i.name + "<br>";
+                zoroHeals.push(i);
+                break;
+            case "dps":
+                document.getElementById("dps-zoro").innerHTML += i.name + "<br>";
+                zoroDps.push(i);
+                break;
+        }
+    }
+    document.getElementById("tank-count-zoro").innerHTML = zoroTanks.length;
+    document.getElementById("heal-count-zoro").innerHTML = zoroHeals.length;
+    document.getElementById("dps-count-zoro").innerHTML = zoroDps.length;
+}
+
+updateTeams();
 
 /**
  * Gets called every time an element is clicked
  * @param {HTMLDivElement} self 
  */
 function onClick(self){
+    if(game.isContextMenuShown){
+        setContextMenuVisibility(false);
+        return;
+    }
     let player = players[self.id.split("_")[1]]
     let otazka;
     if(player.isPicked){
@@ -301,10 +422,10 @@ function onEnterPress(){
         game.otazka.isCorrect = true;
         return;
     }
-    setPopupVisibility(false);
     if(game.otazka.isCorrect){
         if(game.onTurn == "zoro"){
             game.otazka.player.team = "zoro";
+            game.tymZoro.push(game.otazka.player);
             setColor(game.otazka.player.name, "zoro");
             game.otazka.isfinished = true;
             game.onTurn = "kropec";
@@ -312,6 +433,7 @@ function onEnterPress(){
             game.otazka.player.isPicked = true;
         }else{
             game.otazka.player.team = "kropec";
+            game.tymKropec.push(game.otazka.player);
             setColor(game.otazka.player.name, "krop");
             game.otazka.isfinished = true;
             game.onTurn = "zoro";
@@ -330,6 +452,7 @@ function onEnterPress(){
         }
         setTurn(game.onTurn);
     }
+    setPopupVisibility(false);
 }
 
 function onEscPress(){
@@ -340,6 +463,7 @@ function onEscPress(){
     if(!game.otazka.isRunning && game.otazka.isLaunched){
         if(game.onTurn == "zoro"){
             game.otazka.player.team = "kropec";
+            game.tymKropec.push(game.otazka.player);
             setColor(game.otazka.player.name, "krop");
             game.otazka.player.isPicked = true;
             game.onTurn = "kropec";
@@ -348,6 +472,7 @@ function onEscPress(){
         }
         else{
             game.otazka.player.team = "zoro";
+            game.tymZoro.push(game.otazka.player);
             setColor(game.otazka.player.name, "zoro");
             game.otazka.player.isPicked = true;
             game.onTurn = "zoro";
@@ -369,9 +494,12 @@ AzQuizGame.bind = function () {
         })
         i.addEventListener("contextmenu", (e) => {
             e.preventDefault();
-            onRightClick(i);
+            onRightClick(i, e);
         })
     }
+    document.body.addEventListener("click", () => {
+        setContextMenuVisibility(false)
+    })
     /*
     for (var i = 0; i < fields.length; i++) {
         fields[i].addEventListener("click", function (event) {

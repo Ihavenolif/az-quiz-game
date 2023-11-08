@@ -36,13 +36,10 @@
 <div class="screen clear">
     <div id="contextMenu" class="context-menu" style="display: none"> 
         <ul class="menu"> 
-            <li class="share"><a href="#"><i class="fa fa-share" aria-hidden="true"></i> Share</a></li> 
-            <li class="rename"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Rename</a></li> 
-            <li class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i> Copy Link Address</a></li> 
-            <li class="copy"><a href="#"><i class="fa fa-copy" aria-hidden="true"></i> Copy to</a></li> 
-            <li class="paste"><a href="#"><i class="fa fa-paste" aria-hidden="true"></i> Move to</a></li> 
-            <li class="download"><a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download</a></li> 
-            <li class="trash"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></li> 
+            <li class="share"><a href="javascript:forceSelect('zoro')"><i class="fa fa-share" aria-hidden="true"></i> Zoro</a></li> 
+            <li class="rename"><a href="javascript:forceSelect('kropec')"><i class="fa fa-pencil" aria-hidden="true"></i> Kropec</a></li> 
+            <li class="link"><a href="javascript:forceSelect('black')"><i class="fa fa-link" aria-hidden="true"></i> Black</a></li> 
+            <li class="copy"><a href="javascript:forceSelect('reset')"><i class="fa fa-copy" aria-hidden="true"></i> Reset</a></li> 
         </ul> 
     </div> 
 
@@ -66,7 +63,7 @@
         <div class="number warlock_hex" style="top:207px;left:311px;" id="div_Venda">Venda</div>
         <div class="number warlock_hex" style="top:207px;left:392px;" id="div_Elg">Elg</div>
         <div class="number warlock_hex" style="top:207px;left:473px;" id="div_Daph">Daph</div>
-        <div class="number druid_hex" style="top:276px;left:190px;" id="div_Druid">Druid</div>
+        <div class="number druid_hex" style="top:276px;left:190px;" id="div_Dralf">Dralf</div>
         <div class="number hunter_hex" style="top:276px;left:271px;" id="div_Andree">Andree</div>
         <div class="number hunter_hex" style="top:276px;left:352px;" id="div_Dedgo">Dedgo</div>
         <div class="number evoker_hex" style="top:276px;left:433px;" id="div_Linda">Linda</div>
@@ -90,12 +87,28 @@
             <div class="name">
                 <span contenteditable="true" id='name_tym_kropec'>Kropec</span>
             </div>
+            <div style="margin-left: 10px; margin-top: 5px;">
+                <h4 style="margin-bottom: 0;">TANK (<span id="tank-count-kropec"></span>)</h4>
+                <span id="tanks-kropec">tanki<br>online</span>
+                <h4 style="margin-bottom: 0;">HEAL (<span id="heal-count-kropec"></span>)</h4>
+                <span id="heals-kropec">healeri<br>online</span>
+                <h4 style="margin-bottom: 0;">DPS (<span id="dps-count-kropec"></span>)</h4>
+                <span id="dps-kropec">dpski<br>online</span>
+            </div>
         </div>
 
         <div class="team" id="tym_right">
             <div id='img_tym_right' class="zoro_hex"></div>
             <div class="name">
                 <span contenteditable="true" id='name_tym_zoro'>Zoro</span>
+            </div>
+            <div style="margin-right: 10px; margin-top: 5px; text-align: right;">
+                <h4 style="margin-bottom: 0;">(<span id="tank-count-zoro"></span>) TANK</h4>
+                <span id="tanks-zoro">tanki<br>online</span>
+                <h4 style="margin-bottom: 0;">(<span id="heal-count-zoro"></span>) HEAL</h4>
+                <span id="heals-zoro">healeri<br>online</span>
+                <h4 style="margin-bottom: 0;">(<span id="dps-count-zoro"></span>) DPS</h4>
+                <span id="dps-zoro">dpski<br>online</span>
             </div>
         </div>
     </div>
