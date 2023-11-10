@@ -12,6 +12,7 @@ div.number {
     padding-top: 35px;
     background: url('/static/obr/hex/hex_grey.png') no-repeat;
     background-size: 80px 89px;
+    z-index: 1;
 }
 
 div.number:hover {
@@ -319,7 +320,7 @@ div#uvod div.jmeno a:hover {
   }
   .context-menu { 
     position: absolute; 
-    z-index: 2;
+    z-index: 3;
   } 
   .menu {
     display: flex;

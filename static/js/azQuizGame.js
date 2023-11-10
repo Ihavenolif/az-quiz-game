@@ -26,13 +26,15 @@ const classList = "dk_hex dh_hex druid_hex evoker_hex hunter_hex krop_hex mage_h
 const players = {
     "Kropec": new Player("Kropec", "lorem ipsum", "dk", "dps", true, "kropec"),
     "Zoro": new Player("Zoro", "lorem ipsum", "paladin", "tank", true, "zoro"),
-    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "dh", "dps", false, ""),
+    "Janča": new Player("Janča", "lorem ipsum", "dh", "dps", true, "zoro"),
+    "Slečna Chillová": new Player("Slečna Chillová", "lorem ipsum", "dh", "dps", false, ""),
+    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "druid", "dps", false, ""),
     "Gagin": new Player("Gagin", "Gagin se IRL zná s jedním z officerů. Se kterým?", "dh", "dps", false, ""),
     "Lana": new Player("Lana", "Za kterou class začla Lana raidovat s IAO?", "druid", "heal", false, ""),
     "Lesi": new Player("Lesi", "Co je to salamandr?", "rogue", "dps", false, ""),
     "Weng": new Player("Weng", "V nicku Wengeancovo huntera (Nevrmore) se použit jeden speciální znak. Který znak to je?", "rogue", "dps", false, ""),
     "Mia": new Player("Mia", "MIA PH", "warrior", "dps", false, ""),
-    "Punchie": new Player("Punchie", "PUNCHIE PH", "warrior", "dps", false, ""),
+    "Punchie": new Player("Punchie", "PUNCHIE PH", "mage", "dps", false, ""),
     "Venda": new Player("Venda", "VENDA PH", "warlock", "dps", false, ""),
     "Elg": new Player("Elg", "Pro každý tier od Nathrie přiřaď LGmu, jakého maina hrál. Pokud hrál více postav, uzná se ti i jen jedna z nich.", "warlock", "dps", false, ""),
     "Daph": new Player("Daph", "Jaké zranění utrpěl Daph na historicky prvním velkém guildovním srazu?", "warlock", "dps", false, ""),
@@ -45,15 +47,25 @@ const players = {
     "Nolife": new Player("Nolife", "Kolik let bylo Nolifovi, když začal raidovat s IAO?", "mage", "dps", false, ""),
     "Banán": new Player("Banán", "Banán nemá rád, když musí hrát holy. Je to totiž shadow main. Ano nebo ne?", "priest", "heal", false, ""),
     "Lesienne": new Player("Lesienne", "Jak se jmenoval healer, který se s Lesiennem střídal na progressu Denathriuse, a který místo něj byl na killu?", "priest", "heal", false, ""),
-    "Papouch": new Player("Papouch", "PAPOUCH PH", "shaman", "heal", false, ""),
+    "Papouch": new Player("Papouch", "PAPOUCH PH", "mage", "heal", false, ""),
     "Chilla": new Player("Chilla", "CHILLA PH", "shaman", "heal", false, ""),
-    "Zan": new Player("Zan", "ZAN PH", "shaman", "dps", false, ""),
+    "Zan": new Player("Zan", "ZAN PH", "paladin", "dps", false, ""),
     "Suvoj": new Player("Suvoj", "Jaká je nejčastejší koncovka u Suvojových nicků postav?", "paladin", "heal", false, ""),
     "Spaf": new Player("Spaf", "Spaf byl členem IAO už při jejím prvním mythic tieru. Ano nebo ne?", "monk", "heal", false, ""),
     "Sussile": new Player("Sussile", "SUSSILE PH", "monk", "tank", false, ""),
     "Hiruka": new Player("Hiruka", "Jakou roli zastává Honza ve svojí kapele, kterou nikdy nikdo neslyšel a nikde nehrála?", "dh", "tank", false, ""),
-    "Janča": new Player("Janča", "JANČA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "dh", "dps", false, ""),
-    "Solluna": new Player("Solluna", "SOLLUNA PH <i>tohle znamená placeholder, aby bylo jasno...</i>", "shaman", "dps", false, ""),
+    "Olda": new Player("Olda", "OLDA PH", "dh", "dps", false, ""),
+    "Cix": new Player("Cix", "V jakém převleku jste se mohli potkat s Cixem na posledním srazu, kdybyste na něj přijeli?", "warrior", "dps", false, ""),
+    "Raspo": new Player("Raspo", "Nějakou dobu se v guildě objevovaly fámy o tom, že je Raspo brácha jednoho z našich raiderů. Čí brácha měl Raspo být?", "druid", "dps", false, ""),
+    "Olgrin": new Player("Olgrin", "OLGRIN PH", "hunter", "dps", false, ""),
+    "Luriol": new Player("Luriol", "LURIOL PH", "paladin", "dps", false, ""),
+    "Redhill": new Player("Redhill", "Paťas alias Redhill nebo Lopaťas je bájný válečník, jehož damage je postrachem každého tanka. Jakou class a roli hrál v Castle Nathria, kde aktivně raidoval s druhou raid grupou?", "warrior", "dps", false, ""),
+    "Julka": new Player("Julka", "Julka v létě oslavil narození potomka. Kolikáté dítě už má?", "hunter", "dps", false, ""),
+    "Labamba": new Player("Labamba", "Jakubko býval jednou z největších drama queen v IAO. Kolikrát leavl guildu?", "mage", "dps", false, ""),
+    "Zedd": new Player("Zedd", "Jaký je Zeddův oblíbený alkohol?", "warrior", "dps", false, ""),
+
+
+
 }
 /**
  * @type {Array<string>}
@@ -79,7 +91,7 @@ const game = {
     isContextMenuShown: false,
     selectedTileName: "",
     tymKropec: [players["Kropec"]],
-    tymZoro: [players["Zoro"]]
+    tymZoro: [players["Zoro"], players["Janča"]]
 }
 
 function getRandomInt(min, max) {
@@ -202,10 +214,12 @@ function setProgress(percentage){
 function setPopupVisibility(flag){
     if(flag){
         document.getElementById("otazkaTimer").style.display = "block";
+        document.getElementById("otazkaCudliky").style.display = "block";
     }
     else{
         updateTeams()
         document.getElementById("otazkaTimer").style.display = "none";
+        document.getElementById("otazkaCudliky").style.display = "none";
     }
 }
 
@@ -254,17 +268,48 @@ function onRightClick(self, e){
     } 
 }
 
+function modButtonClick(team){
+    setPopupVisibility(false);
+    clearInterval(game.otazka.timer);
+    game.otazka.isRunning = false;
+    game.otazka.isCorrect = true;
+    game.otazka.isSoundPlaying = false;
+    game.otazka.sound.pause();
+    if(game.onTurn == "zoro"){
+        setTurn("kropec");
+    }
+    else{
+        setTurn("zoro");
+    }
+    forceSelect(team);
+}
+
 /**
  * 
  * @param {string} team 
  */
 function forceSelect(team){
-    player = players[game.selectedTileName];
+    /**
+     * @type {Player}
+     */
+    let player;
+    if(!game.otazka.isfinished){
+        player = game.otazka.player;
+    }
+    else{
+        player = players[game.selectedTileName];
+    }
     if(player.isPicked){
         if(player.team == "zoro"){
+            if(player.name == "Chilla"){
+                game.tymZoro.splice(game.tymZoro.indexOf(players["Slečna Chillová"]), 1);
+            }
             game.tymZoro.splice(game.tymZoro.indexOf(player), 1);
         }
         if(player.team == "kropec"){
+            if(player.name == "Chilla"){
+                game.tymKropec.splice(game.tymKropec.indexOf(players["Slečna Chillová"]), 1);
+            }
             game.tymKropec.splice(game.tymKropec.indexOf(player), 1);
         }
     }
@@ -273,23 +318,41 @@ function forceSelect(team){
             player.isPicked = true;
             player.team = "zoro";
             game.tymZoro.push(player);
+            if(player.name == "Chilla"){
+                game.tymZoro.push(players["Slečna Chillová"]);
+                players["Slečna Chillová"].isPicked = true;
+                players["Slečna Chillová"].team = "zoro";
+            }
             setColor(player.name,"zoro");
             break;
         case "kropec":
             player.isPicked = true;
             player.team = "kropec";
             game.tymKropec.push(player);
+            if(player.name == "Chilla"){
+                game.tymKropec.push(players["Slečna Chillová"]);
+                players["Slečna Chillová"].isPicked = true;
+                players["Slečna Chillová"].team = "kropec";
+            }
             setColor(player.name,"krop");
             break;
         case "black":
             player.isPicked = false;
             player.team = "kosik";
             setColor(player.name,"dark");
+            if(player.name == "Chilla"){
+                players["Slečna Chillová"].isPicked = false;
+                players["Slečna Chillová"].team = "kosik";
+            }
             break;
         case "reset":
             player.isPicked = false;
             player.team = "";
             setColor(player.name,player.wowClass);
+            if(player.name == "Chilla"){
+                players["Slečna Chillová"].isPicked = false;
+                players["Slečna Chillová"].team = "";
+            }
             break;
     }
     updateTeams();
@@ -370,6 +433,9 @@ function onClick(self){
         setContextMenuVisibility(false);
         return;
     }
+    if(!game.otazka.isfinished){
+        return;
+    }
     let player = players[self.id.split("_")[1]]
     let otazka;
     if(player.isPicked){
@@ -384,6 +450,7 @@ function onClick(self){
         otazka = player.otazka;
     }
     document.getElementById("progressbar").style.backgroundColor = game.onTurn == "zoro" ? "#F48CBA" : "#C41E3A"
+    document.getElementById("otazkaTimer").style.borderColor = game.onTurn == "zoro" ? "#F48CBA" : "#C41E3A"
     setProgress(100)
     setPopupVisibility(true);
     document.getElementById("otazka-container").innerHTML = otazka;
@@ -437,6 +504,11 @@ function onEnterPress(){
         if(game.onTurn == "zoro"){
             game.otazka.player.team = "zoro";
             game.tymZoro.push(game.otazka.player);
+            if(game.otazka.player.name == "Chilla"){
+                game.tymZoro.push(players["Slečna Chillová"]);
+                players["Slečna Chillová"].isPicked = true;
+                players["Slečna Chillová"].team = "zoro";
+            }
             setColor(game.otazka.player.name, "zoro");
             game.otazka.isfinished = true;
             setTurn("kropec");
@@ -444,6 +516,11 @@ function onEnterPress(){
         }else{
             game.otazka.player.team = "kropec";
             game.tymKropec.push(game.otazka.player);
+            if(game.otazka.player.name == "Chilla"){
+                game.tymKropec.push(players["Slečna Chillová"]);
+                players["Slečna Chillová"].isPicked = true;
+                players["Slečna Chillová"].team = "kropec";
+            }
             setColor(game.otazka.player.name, "krop");
             game.otazka.isfinished = true;
             setTurn("zoro");
@@ -547,7 +624,7 @@ AzQuizGame.setProperGameHeight = function(){
         newHeight = (newWidth /  800) *  600;
     }
 
-    this.settings.zoom = newHeight / 600;
+    this.settings.zoom = newHeight / 700;
     document.getElementById("body").style.zoom = this.settings.zoom;
 };
 
