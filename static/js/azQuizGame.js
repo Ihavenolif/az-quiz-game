@@ -355,6 +355,7 @@ function forceSelect(team){
             }
             break;
     }
+    game.otazka.isfinished = true;
     updateTeams();
 }
 
