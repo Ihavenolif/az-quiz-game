@@ -3,14 +3,18 @@ class Player{
      * 
      * @param {string} name 
      * @param {string} otazka 
+     * @param {string} backupOtazka 
+     * @param {boolean} isBackupAvailable 
      * @param {string} wowClass 
      * @param {string} role 
      * @param {boolean} isPicked 
      * @param {string} team 
      */
-    constructor(name, otazka, wowClass, role, isPicked, team){
+    constructor(name, otazka, backupOtazka, isBackupAvailable, wowClass, role, isPicked, team){
         this.name = name;
         this.otazka = otazka;
+        this.backupOtazka = backupOtazka;
+        this.isBackupAvailable = isBackupAvailable;
         this.wowClass = wowClass;
         this.role = role;
         this.isPicked = isPicked;
@@ -24,45 +28,45 @@ const classList = "dk_hex dh_hex druid_hex evoker_hex hunter_hex krop_hex mage_h
  * @type {Object<string,Player>}
  */
 const players = {
-    "Kropec": new Player("Kropec", "lorem ipsum", "dk", "dps", true, "kropec"),
-    "Zoro": new Player("Zoro", "lorem ipsum", "paladin", "tank", true, "zoro"),
-    "Janča": new Player("Janča", "lorem ipsum", "dh", "dps", true, "zoro"),
-    "Slečna Chillová": new Player("Slečna Chillová", "lorem ipsum", "dh", "dps", false, ""),
-    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "druid", "dps", false, ""),
-    "Gagin": new Player("Gagin", "Gagin se IRL zná s jedním z officerů. Se kterým?", "dh", "dps", false, ""),
-    "Lana": new Player("Lana", "Za kterou class začla Lana raidovat s IAO?", "druid", "heal", false, ""),
-    "Lesi": new Player("Lesi", "Co je to salamandr?", "rogue", "dps", false, ""),
-    "Weng": new Player("Weng", "V nicku Wengeancovo huntera (Nevrmore) se použit jeden speciální znak. Který znak to je?", "rogue", "dps", false, ""),
-    "Mia": new Player("Mia", "MIA PH", "warrior", "dps", false, ""),
-    "Punchie": new Player("Punchie", "PUNCHIE PH", "mage", "dps", false, ""),
-    "Venda": new Player("Venda", "VENDA PH", "warlock", "dps", false, ""),
-    "Elg": new Player("Elg", "Pro každý tier od Nathrie přiřaď LGmu, jakého maina hrál. Pokud hrál více postav, uzná se ti i jen jedna z nich.", "warlock", "dps", false, ""),
-    "Daph": new Player("Daph", "Jaké zranění utrpěl Daph na historicky prvním velkém guildovním srazu?", "warlock", "dps", false, ""),
-    "Dralf": new Player("Dralf", "DRALF PH", "druid", "dps", false, ""),
-    "Andree": new Player("Andree", "Andree má moc rád jeden konkrétní dopravní prostředek. Jaký?", "hunter", "dps", false, ""),
-    "Dedgo": new Player("Dedgo", "DEDGO PH", "hunter", "dps", false, ""),
-    "Linda": new Player("Linda", "Padla evoker legendárka dříve Lindovi nebo LGmu?", "evoker", "dps", false, ""),
-    "Draruka": new Player("Draruka", "DRARUKA PH", "evoker", "dps", false, ""),
-    "Vophsi": new Player("Vophsi", "Jaká abilita je Vophsiho nemesis z Xy'moxe v Nathrii?", "mage", "dps", false, ""),
-    "Nolife": new Player("Nolife", "Kolik let bylo Nolifovi, když začal raidovat s IAO?", "mage", "dps", false, ""),
-    "Banán": new Player("Banán", "Banán nemá rád, když musí hrát holy. Je to totiž shadow main. Ano nebo ne?", "priest", "heal", false, ""),
-    "Lesienne": new Player("Lesienne", "Jak se jmenoval healer, který se s Lesiennem střídal na progressu Denathriuse, a který místo něj byl na killu?", "priest", "heal", false, ""),
-    "Papouch": new Player("Papouch", "PAPOUCH PH", "mage", "heal", false, ""),
-    "Chilla": new Player("Chilla", "CHILLA PH", "shaman", "heal", false, ""),
-    "Zan": new Player("Zan", "ZAN PH", "paladin", "dps", false, ""),
-    "Suvoj": new Player("Suvoj", "Jaká je nejčastejší koncovka u Suvojových nicků postav?", "paladin", "heal", false, ""),
-    "Spaf": new Player("Spaf", "Spaf byl členem IAO už při jejím prvním mythic tieru. Ano nebo ne?", "monk", "heal", false, ""),
-    "Sussile": new Player("Sussile", "SUSSILE PH", "monk", "tank", false, ""),
-    "Hiruka": new Player("Hiruka", "Jakou roli zastává Honza ve svojí kapele, kterou nikdy nikdo neslyšel a nikde nehrála?", "dh", "tank", false, ""),
-    "Olda": new Player("Olda", "OLDA PH", "dh", "dps", false, ""),
-    "Cix": new Player("Cix", "V jakém převleku jste se mohli potkat s Cixem na posledním srazu, kdybyste na něj přijeli?", "warrior", "dps", false, ""),
-    "Raspo": new Player("Raspo", "Nějakou dobu se v guildě objevovaly fámy o tom, že je Raspo brácha jednoho z našich raiderů. Čí brácha měl Raspo být?", "druid", "dps", false, ""),
-    "Olgrin": new Player("Olgrin", "OLGRIN PH", "hunter", "dps", false, ""),
-    "Luriol": new Player("Luriol", "LURIOL PH", "paladin", "dps", false, ""),
-    "Redhill": new Player("Redhill", "Paťas alias Redhill nebo Lopaťas je bájný válečník, jehož damage je postrachem každého tanka. Jakou class a roli hrál v Castle Nathria, kde aktivně raidoval s druhou raid grupou?", "warrior", "dps", false, ""),
-    "Julka": new Player("Julka", "Julka v létě oslavil narození potomka. Kolikáté dítě už má?", "hunter", "dps", false, ""),
-    "Labamba": new Player("Labamba", "Jakubko býval jednou z největších drama queen v IAO. Kolikrát leavl guildu?", "mage", "dps", false, ""),
-    "Zedd": new Player("Zedd", "Jaký je Zeddův oblíbený alkohol?", "warrior", "dps", false, ""),
+    "Kropec": new Player("Kropec", "lorem ipsum", "nezajem", false, "dk", "dps", true, "kropec"),
+    "Zoro": new Player("Zoro", "lorem ipsum", "nezajem", false, "paladin", "tank", true, "zoro"),
+    "Janča": new Player("Janča", "lorem ipsum", "nezajem", false, "dh", "dps", true, "zoro"),
+    "Slečna Chillová": new Player("Slečna Chillová", "lorem ipsum", "nezajem", false, "dh", "dps", false, ""),
+    "Týna": new Player("Týna", "Týna se urazila a přestala raidovat ve Vault tieru po tom co dostala bench na kterém bossovi?", "Týna nestíhá raidy a přestala hrát v minulém tieru. Má to ale naprosto pochopitelné vysvětlení, stala se maminkou (psí) a musela se starat o nového člena domácnosti. Je to pravda?", true, "druid", "dps", false, ""),
+    "Gagin": new Player("Gagin", "Gagin se IRL zná s jedním z officerů. Se kterým?", "Gagin je jeden z našich nejstarších raiderů, s IAO raiduje už od raidu Battle for Dazar'Alor v BFA. Je to pravda?",  true, "dh", "dps", false, ""),
+    "Lana": new Player("Lana", "Lana sbírá pety i v realitě a tak má doma už 3 kočky, z nichž každá je jiný recolor. O jaké 3 barvy se jedná?", "Lana se v průběhu dragonflightu rozhodla vyskillovat všechny profese a nabídnout gildě možnost craftu většiny itemů. V rámci nové sezóny se ale překonala a naučila se už úplně všechny dragonflight recepty, které by mohli naši raideři potřebovat. Je to pravda?", true, "druid", "heal", false, ""),
+    "Lesi": new Player("Lesi", "Na BfA Lesi sháněl na svého guardian druida weapon, která byla známa svojí bezprecedentní mitigací (potvrzeno i Lesiho výpočty). Z kterého raidu tato mitigační zbraň padala?", "Lesiho nick pochází z doby jeho působení ve skautském oddíle v dětství a odkazuje na jeho expertní zálesácké dovednosti. Je to pravda?", true, "rogue", "dps", false, ""),
+    "Weng": new Player("Weng", "V nicku Wengeancovo huntera (Nevrmore) se použit jeden speciální znak. Který znak to je?", "backup ph", false, "rogue", "dps", false, ""),
+    "Mia": new Player("Mia", "Mia je další zástupkyní něžného pohlaví v mythic raidu IAO. Vyjmenuj alespoň 4 další ženy, které se v mythic raidu IAO pravidelně objevovaly.", "backup ph", false, "warrior", "dps", false, ""),
+    "Punchie": new Player("Punchie", "Kolik AotC Punch za svou kariéru získal?", "Každý nováček musí prokázat, jak dobrý člověk je. K tomu u nás slouží jednoduchá otázka. Má Punch rád guláš?", true, "mage", "dps", false, ""),
+    "Venda": new Player("Venda", "Vendův paladin byl dříve pojmenován podle jednoho z jeho kamarádů, se kterým přišel do guildy. Po dramatu s tímto člověkem byl paladin přejmenován podle druhého z jeho kamarádů. Uveď alespoň jeden z těchto nicků Vendova paladina.", "backup ph", false, "warlock", "dps", false, ""),
+    "Elg": new Player("Elg", "Pro každý tier od Nathrie přiřaď LGmu, jakého maina hrál. Pokud hrál více postav, uzná se ti i jen jedna z nich.", "backup ph", false, "warlock", "dps", false, ""),
+    "Daph": new Player("Daph", "Jaké zranění utrpěl Daph na historicky prvním velkém guildovním srazu?", "backup ph", false, "warlock", "dps", false, ""),
+    "Dralf": new Player("Dralf", "Balance druidů se historicky v IAO moc neobjevovalo, ale když už s námi nějaký raidoval, jednalo se většinou o dobré hráče. Vyjmenuj alespoň dva další IAO balance druidy, kteří se v R1 objevovali pravidelně na předních příčkách DPS metrů.", "backup ph", false, "druid", "dps", false, ""),
+    "Andree": new Player("Andree", "Andree má moc rád jeden konkrétní dopravní prostředek. Jaký?", "backup ph", false, "hunter", "dps", false, ""),
+    "Dedgo": new Player("Dedgo", "Nick Dedgo se podle všeho čte přesně tak, jak se píše. Jak ale s oblibou Dedgovi v guildě říkáme?", "backup ph", false, "hunter", "dps", false, ""),
+    "Linda": new Player("Linda", "Padla evoker legendárka dříve Lindovi nebo LGmu?", "Linda se dlouho těšil na dracthyra a release DF byl pro něj splněný sen. Vzal to tak vážně, že při releasu smazal svého původního maina (druida), aby si mohl na nově založeném drakovi zachovat jeho nick. Je to pravda?", true, "evoker", "dps", false, ""),
+    "Draruka": new Player("Draruka", "Kolik hodin má podle steamu Uruka nahráno na jeho oblíbeném hentai dating simulátoru s názvem Crush Crush? Tolerance 10 hodin.", "backup ph", false, "evoker", "dps", false, ""),
+    "Vophsi": new Player("Vophsi", "Jaká abilita je Vophsiho nemesis z Xy'moxe v Nathrii?", "backup ph", false, "mage", "dps", false, ""),
+    "Nolife": new Player("Nolife", "Kolik let bylo Nolifovi, když začal raidovat s IAO?", "backup ph", false, "mage", "dps", false, ""),
+    "Banán": new Player("Banán", "Banán je bezesporu náš nejlepší healer, byly ale doby kdy jeho skill byl potřeba na pozici tanka. Jaké jméno a classu má jeho postava, za kterou tankoval mythic progress v průběhu BfA?", "backup ph", false, "priest", "heal", false, ""),
+    "Lesienne": new Player("Lesienne", "Jak se jmenoval healer, který se s Lesiennem střídal na progressu Denathriuse, a který místo něj byl na killu?", "Lesienne je často pracovně mimo ČR, mimojiné s námi progressoval z Indie. Naposledy přestal raidovat kvůli odletu do JAR. Je to pravda?", true, "priest", "heal", false, ""),
+    "Papouch": new Player("Papouch", "DOPLNIT", "Jména Paposnica, Papousnik jsou odvozená od Papouchovo životního přání pořídit si papouška. Je to pravda? (ne, už ho má)", true, "mage", "heal", false, ""),
+    "Chilla": new Player("Chilla", "Chilla přišel do IAO na konci minulého tieru s dalšimi dvěma hráči. Kteří hráči to byli?", "Ve sbírání čehokoliv se Chilla drží na předních příčkách v rámci guildy. Má ale víc mountů než Lana?", true, "shaman", "heal", false, ""),
+    "Zan": new Player("Zan", "Zan už má za sebou vydatný mythic progress v BfA, jak si říkala jeho tehdejší officerka, ke které měl blízko?", "backup ph", false, "paladin", "dps", false, ""),
+    "Suvoj": new Player("Suvoj", "V úterý večer většinou Suvoje ingame nezastihnete, protože sportuje. Jakému sportu se Suvoj ve svém volném čase věnuje?", "backup ph", false, "paladin", "heal", false, ""),
+    "Spaf": new Player("Spaf", "V jakém raidu z BfA expanze se Spaf poprvé objevil v IAO mythic rosteru?", "backup ph", false, "monk", "heal", false, ""),
+    "Sussile": new Player("Sussile", "Z jaké guildy k nám Sussiky přišel?", "backup ph", false, "monk", "tank", false, ""),
+    "Hiruka": new Player("Hiruka", "Jakou roli zastává Honza ve svojí kapele, kterou nikdy nikdo neslyšel a nikde nehrála?", "backup ph", false, "dh", "tank", false, ""),
+    "Olda": new Player("Olda", "V M+ nás Olda minulou sezónu vzorně reprezentoval se svým paladinem. Jaký healer rank na serveru se mu podařilo dosáhnout?", "Pítchifuk, Ukradenýkolo, Tragicomedy - to jsou osobitá jména Oldových postav. Patří mezi jeho alty i  nudně pojmenovaný char Belysra?", true, "dh", "dps", false, ""),
+    "Cix": new Player("Cix", "V jakém převleku jste se mohli potkat s Cixem na posledním srazu, kdybyste na něj přijeli?", "Byl Cix součástí historicky prvního CE, které IAO získalo?", true, "warrior", "dps", false, ""),
+    "Raspo": new Player("Raspo", "Nějakou dobu se v guildě objevovaly fámy o tom, že je Raspo brácha jednoho z našich raiderů. Čí brácha měl Raspo být?", "backup ph", false, "druid", "dps", false, ""),
+    "Olgrin": new Player("Olgrin", "DOPLNIT", "Zatímco někteří hunteři pojmenovávají svoje pety \"KurvoHero\" nebo \"TrhejPico\", Olgrin své válečné bestii, se kterou zabil i Echo, říká Frank. Je to pravda?", true, "hunter", "dps", false, ""),
+    "Luriol": new Player("Luriol", "Než Lura přestal hrát, měl našlápnuto na silnou push sezónu. Jaký nejvyšší klíč timnul v prvním týdnu S2?", "backup ph", false, "paladin", "dps", false, ""),
+    "Redhill": new Player("Redhill", "Paťas alias Redhill nebo Lopaťas je bájný válečník, jehož damage je postrachem každého tanka. Jakou class a roli hrál v Castle Nathria, kde aktivně raidoval s druhou raid grupou?", "backup ph", false, "warrior", "dps", false, ""),
+    "Julka": new Player("Julka", "Julka v létě oslavil narození potomka. Kolikáté dítě už má?", "backup ph", false, "hunter", "dps", false, ""),
+    "Labamba": new Player("Labamba", "Jakubko býval jednou z největších drama queen v IAO. Kolikrát leavl guildu?", "backup ph", false, "mage", "dps", false, ""),
+    "Zedd": new Player("Zedd", "Jaký je Zeddův oblíbený alkohol?", "Zed má hodně altů a jen o trochu méně dětí. Aktuálně má Zed doma 4 děti. Je to pravda?", true, "warrior", "dps", false, ""),
 
 
 
@@ -443,9 +447,16 @@ function onClick(self){
         return;
     }
     if(player.team == "kosik"){
-        id = getRandomInt(0,guildOtazky.length);
-        otazka = guildOtazky[id];
-        guildOtazky.splice(id, 1);
+        if(player.isBackupAvailable){
+            otazka = player.backupOtazka;
+            player.isBackupAvailable = false;
+        }
+        else{
+            id = getRandomInt(0,guildOtazky.length);
+            otazka = guildOtazky[id];
+            guildOtazky.splice(id, 1);
+        }
+        
     }
     else{
         otazka = player.otazka;
