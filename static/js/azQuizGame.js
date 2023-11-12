@@ -77,7 +77,16 @@ const players = {
 let guildOtazky = [
     "Kolik let už existuje IAO?",
     "Jaký byl první raid tier IAO?",
-    "Za celou dobu se v IAO vystřídalo 9 officerů. Ano nebo ne?"
+    "Za celou dobu se v IAO vystřídalo 9 officerů. Ano nebo ne?",
+    "Vyjmenuj alespoň 3 z 5 zakládajících členů IAO.",
+    "V kterém raidu dala IAO svůj první Cutting Edge?",
+    "Kolik bossů na mythic zabila IAO v Uldiru?",
+    "Se kterou guildou se IAO na pokraji rozpadu spojovala během Sepucher of the First Ones v Shadowlands?",
+    "Jak se jmenovala první R2 v IAO a kdo jí vedl?",
+    "IAO je Drak'thulská alianční streamovací velmoc. Vyjmenuj alespoň 5 streamerů co kdy byli v IAO.",
+    "IAO se pyšní svým vlastním botem na memy a další useless věci. Starají se o něj 3 lidi, vyjmenuj alespoň 2 z nich.",
+    "Ve druhé sezóně Shadowlands se odehrála velká bitva mezi dvěma týmy v guildě, kdo bude mít větší R.io. Jak se tyto dva týmy jmenovaly?",
+    "Jaká je úhlová rychlost na kolotoči v Sanctum of Domination?"
 ]
 const game = {
     otazka:{
